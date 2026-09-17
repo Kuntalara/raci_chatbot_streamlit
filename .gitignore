@@ -1,0 +1,18 @@
+# Real secrets — never commit this. Use secrets.toml.example as the template,
+# and set real values via Streamlit Community Cloud's Settings -> Secrets panel.
+.streamlit/secrets.toml
+
+# Optional raw source Excel files — not needed at runtime (app reads parquet/pkl only)
+data/*.xlsx
+
+# Lazily-built tupoksi embedding cache — intentionally NOT bundled (see README),
+# rebuilt in-memory as needed each time the app instance (re)starts.
+data/tugas_pokok_embeddings_cache.pkl
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+
+venv/
