@@ -26,9 +26,12 @@ def _get_secret(key, required=True):
 CHAT_API_KEY = _get_secret("AI_LAB_API_KEY")
 EMBED_API_KEY = _get_secret("AILAB_API_KEY")
 
-BASE_URL = "https://llmservice.air.id"
-CHAT_MODEL = "ailab/Qwen/Qwen3.5-35B-A3B"
-EMBED_MODEL = "ailab/bge-m3"
+# BASE_URL, CHAT_MODEL, and EMBED_MODEL can be overridden via secrets/env
+# (e.g. to test with a different provider like Groq) without editing this file.
+# If not set anywhere, they fall back to the defaults below.
+BASE_URL = _get_secret("BASE_URL", required=False) or "https://llmservice.air.id"
+CHAT_MODEL = _get_secret("CHAT_MODEL", required=False) or "ailab/Qwen/Qwen3.5-35B-A3B"
+EMBED_MODEL = _get_secret("EMBED_MODEL", required=False) or "ailab/bge-m3"
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 
